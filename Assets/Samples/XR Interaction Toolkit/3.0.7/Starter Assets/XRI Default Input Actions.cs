@@ -1545,15 +1545,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""PrimaryAction"",
-                    ""type"": ""Button"",
-                    ""id"": ""c6d10491-f8be-4d5d-8f2c-d17541583b1d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1961,17 +1952,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Thumbstick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e8e7d2b4-f45e-49b8-9c90-3ce81075d75e"",
-                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PrimaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -2436,6 +2416,24 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrimaryAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""3cc78f19-959b-4356-8cb4-005f0ecae521"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondaryAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""dfc6d0ca-e654-42ca-93bf-893fab6cb7d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -2491,6 +2489,28 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Grab Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b6141fb-95db-45d2-a3cf-e3ea5bf710f2"",
+                    ""path"": ""<XRController>{RightHand}/{PrimaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrimaryAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""714ae3e7-2ada-47a1-91ee-1a435ba76760"",
+                    ""path"": ""<XRController>{RightHand}/{SecondaryButton}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SecondaryAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -3423,7 +3443,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         m_XRIRight_GripPosition = m_XRIRight.FindAction("Grip Position", throwIfNotFound: true);
         m_XRIRight_GripRotation = m_XRIRight.FindAction("Grip Rotation", throwIfNotFound: true);
         m_XRIRight_Thumbstick = m_XRIRight.FindAction("Thumbstick", throwIfNotFound: true);
-        m_XRIRight_PrimaryAction = m_XRIRight.FindAction("PrimaryAction", throwIfNotFound: true);
         // XRI Right Interaction
         m_XRIRightInteraction = asset.FindActionMap("XRI Right Interaction", throwIfNotFound: true);
         m_XRIRightInteraction_Select = m_XRIRightInteraction.FindAction("Select", throwIfNotFound: true);
@@ -3446,6 +3465,8 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         m_XRIRightLocomotion_SnapTurn = m_XRIRightLocomotion.FindAction("Snap Turn", throwIfNotFound: true);
         m_XRIRightLocomotion_Move = m_XRIRightLocomotion.FindAction("Move", throwIfNotFound: true);
         m_XRIRightLocomotion_GrabMove = m_XRIRightLocomotion.FindAction("Grab Move", throwIfNotFound: true);
+        m_XRIRightLocomotion_PrimaryAction = m_XRIRightLocomotion.FindAction("PrimaryAction", throwIfNotFound: true);
+        m_XRIRightLocomotion_SecondaryAction = m_XRIRightLocomotion.FindAction("SecondaryAction", throwIfNotFound: true);
         // XRI UI
         m_XRIUI = asset.FindActionMap("XRI UI", throwIfNotFound: true);
         m_XRIUI_Navigate = m_XRIUI.FindAction("Navigate", throwIfNotFound: true);
@@ -4028,7 +4049,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
     private readonly InputAction m_XRIRight_GripPosition;
     private readonly InputAction m_XRIRight_GripRotation;
     private readonly InputAction m_XRIRight_Thumbstick;
-    private readonly InputAction m_XRIRight_PrimaryAction;
     public struct XRIRightActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -4047,7 +4067,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         public InputAction @GripPosition => m_Wrapper.m_XRIRight_GripPosition;
         public InputAction @GripRotation => m_Wrapper.m_XRIRight_GripRotation;
         public InputAction @Thumbstick => m_Wrapper.m_XRIRight_Thumbstick;
-        public InputAction @PrimaryAction => m_Wrapper.m_XRIRight_PrimaryAction;
         public InputActionMap Get() { return m_Wrapper.m_XRIRight; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -4099,9 +4118,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @Thumbstick.started += instance.OnThumbstick;
             @Thumbstick.performed += instance.OnThumbstick;
             @Thumbstick.canceled += instance.OnThumbstick;
-            @PrimaryAction.started += instance.OnPrimaryAction;
-            @PrimaryAction.performed += instance.OnPrimaryAction;
-            @PrimaryAction.canceled += instance.OnPrimaryAction;
         }
 
         private void UnregisterCallbacks(IXRIRightActions instance)
@@ -4148,9 +4164,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @Thumbstick.started -= instance.OnThumbstick;
             @Thumbstick.performed -= instance.OnThumbstick;
             @Thumbstick.canceled -= instance.OnThumbstick;
-            @PrimaryAction.started -= instance.OnPrimaryAction;
-            @PrimaryAction.performed -= instance.OnPrimaryAction;
-            @PrimaryAction.canceled -= instance.OnPrimaryAction;
         }
 
         public void RemoveCallbacks(IXRIRightActions instance)
@@ -4312,6 +4325,8 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
     private readonly InputAction m_XRIRightLocomotion_SnapTurn;
     private readonly InputAction m_XRIRightLocomotion_Move;
     private readonly InputAction m_XRIRightLocomotion_GrabMove;
+    private readonly InputAction m_XRIRightLocomotion_PrimaryAction;
+    private readonly InputAction m_XRIRightLocomotion_SecondaryAction;
     public struct XRIRightLocomotionActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -4322,6 +4337,8 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         public InputAction @SnapTurn => m_Wrapper.m_XRIRightLocomotion_SnapTurn;
         public InputAction @Move => m_Wrapper.m_XRIRightLocomotion_Move;
         public InputAction @GrabMove => m_Wrapper.m_XRIRightLocomotion_GrabMove;
+        public InputAction @PrimaryAction => m_Wrapper.m_XRIRightLocomotion_PrimaryAction;
+        public InputAction @SecondaryAction => m_Wrapper.m_XRIRightLocomotion_SecondaryAction;
         public InputActionMap Get() { return m_Wrapper.m_XRIRightLocomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -4349,6 +4366,12 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @GrabMove.started += instance.OnGrabMove;
             @GrabMove.performed += instance.OnGrabMove;
             @GrabMove.canceled += instance.OnGrabMove;
+            @PrimaryAction.started += instance.OnPrimaryAction;
+            @PrimaryAction.performed += instance.OnPrimaryAction;
+            @PrimaryAction.canceled += instance.OnPrimaryAction;
+            @SecondaryAction.started += instance.OnSecondaryAction;
+            @SecondaryAction.performed += instance.OnSecondaryAction;
+            @SecondaryAction.canceled += instance.OnSecondaryAction;
         }
 
         private void UnregisterCallbacks(IXRIRightLocomotionActions instance)
@@ -4371,6 +4394,12 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
             @GrabMove.started -= instance.OnGrabMove;
             @GrabMove.performed -= instance.OnGrabMove;
             @GrabMove.canceled -= instance.OnGrabMove;
+            @PrimaryAction.started -= instance.OnPrimaryAction;
+            @PrimaryAction.performed -= instance.OnPrimaryAction;
+            @PrimaryAction.canceled -= instance.OnPrimaryAction;
+            @SecondaryAction.started -= instance.OnSecondaryAction;
+            @SecondaryAction.performed -= instance.OnSecondaryAction;
+            @SecondaryAction.canceled -= instance.OnSecondaryAction;
         }
 
         public void RemoveCallbacks(IXRIRightLocomotionActions instance)
@@ -4676,7 +4705,6 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         void OnGripPosition(InputAction.CallbackContext context);
         void OnGripRotation(InputAction.CallbackContext context);
         void OnThumbstick(InputAction.CallbackContext context);
-        void OnPrimaryAction(InputAction.CallbackContext context);
     }
     public interface IXRIRightInteractionActions
     {
@@ -4701,6 +4729,8 @@ public partial class @XRIDefaultInputActions: IInputActionCollection2, IDisposab
         void OnSnapTurn(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnGrabMove(InputAction.CallbackContext context);
+        void OnPrimaryAction(InputAction.CallbackContext context);
+        void OnSecondaryAction(InputAction.CallbackContext context);
     }
     public interface IXRIUIActions
     {

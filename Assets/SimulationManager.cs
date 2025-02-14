@@ -11,6 +11,9 @@ public enum SimulationMode
 public class SimulationManager : MonoBehaviour
 {
     [SerializeField] private GameObject furniture;
+    [SerializeField] private GameObject counterExtension;
+    [SerializeField] private GameObject hokersBeforeExtension;
+    [SerializeField] private GameObject hokersAfterExtension;
     private XRIDefaultInputActions _inputActions;
     private SimulationMode _currentMode;
 
@@ -23,14 +26,16 @@ public class SimulationManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputActions.XRIRight.Enable();
-        _inputActions.XRIRight.PrimaryAction.performed += SwitchMode;
+        _inputActions.XRIRightLocomotion.Enable();
+        _inputActions.XRIRightLocomotion.PrimaryAction.performed += SwitchMode;
+        _inputActions.XRIRightLocomotion.SecondaryAction.performed += ToggleCounterExtension;
     }
-
+    
     private void OnDisable()
     {
-        _inputActions.XRIRight.Disable();
-        _inputActions.XRIRight.PrimaryAction.performed -= SwitchMode;
+        _inputActions.XRIRightLocomotion.Disable();
+        _inputActions.XRIRightLocomotion.PrimaryAction.performed -= SwitchMode;
+        _inputActions.XRIRightLocomotion.SecondaryAction.performed -= ToggleCounterExtension;
     }
 
     private void SwitchMode(InputAction.CallbackContext obj)
@@ -45,5 +50,12 @@ public class SimulationManager : MonoBehaviour
             _currentMode = SimulationMode.Walls;
             furniture.SetActive(false);
         }
+    }
+    private void ToggleCounterExtension(InputAction.CallbackContext obj)
+    {
+        Debug.Log(!counterExtension.activeSelf);
+        hokersBeforeExtension.SetActive(counterExtension.activeSelf);
+        hokersAfterExtension.SetActive(!counterExtension.activeSelf);
+        counterExtension.SetActive(!counterExtension.activeSelf);
     }
 }
